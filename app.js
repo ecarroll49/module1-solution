@@ -11,9 +11,15 @@ function LunchCheckController($scope) {
 
   $scope.checkLunchItems = function () {
     var listOfLunchItems = $scope.lunchItems.split(",");
-    if(listOfLunchItems == 0) {
+    var numberOfLunchItems = 0;
+    for( var x = 0; x < listOfLunchItems.length; x++) {
+      if(/\S/.test(listOfLunchItems[x])) {
+        ++numberOfLunchItems;
+      }
+    }
+    if(numberOfLunchItems == 0) {
       $scope.stateOfLunch = "Enter at least one item.";
-    } else if (listOfLunchItems.length > 3) {
+    } else if (numberOfLunchItems > 3) {
       $scope.stateOfLunch = "To much!";
     } else {
       $scope.stateOfLunch = "Enjoy!";
