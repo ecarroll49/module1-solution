@@ -12,6 +12,7 @@ function LunchCheckController($scope) {
   $scope.checkLunchItems = function () {
     var listOfLunchItems = $scope.lunchItems.split(",");
     var numberOfLunchItems = 0;
+    // do NOT consider and empty item
     for( var x = 0; x < listOfLunchItems.length; x++) {
       if(/\S/.test(listOfLunchItems[x])) {
         ++numberOfLunchItems;
